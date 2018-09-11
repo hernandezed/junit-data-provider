@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.junit.jupiter.json</groupId>
+  <artifactId>json-provider</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20180911015523</lastUpdated>
+  </versioning>
+</metadata>
