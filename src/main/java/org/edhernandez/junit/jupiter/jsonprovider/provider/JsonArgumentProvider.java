@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.junit.jupiter.jsonprovider.provider;
+package org.edhernandez.junit.jupiter.jsonprovider.provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.junit.jupiter.jsonprovider.annotation.JsonSource;
-import com.junit.jupiter.jsonprovider.annotation.JacksonPropertyNamingStrategy;
-import com.junit.jupiter.jsonprovider.argument.JsonArgument;
+import org.edhernandez.junit.jupiter.jsonprovider.annotation.JsonSource;
+import org.edhernandez.junit.jupiter.jsonprovider.annotation.JacksonPropertyNamingStrategy;
+import org.edhernandez.junit.jupiter.jsonprovider.argument.JsonArgument;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;

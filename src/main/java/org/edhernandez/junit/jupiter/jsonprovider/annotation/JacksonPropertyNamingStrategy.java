@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.junit.jupiter.jsonprovider.annotation;
+package org.edhernandez.junit.jupiter.jsonprovider.annotation;
 
 /**
  * Identify Naming Strategies from Jackson

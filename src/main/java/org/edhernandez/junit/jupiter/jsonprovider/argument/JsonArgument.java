@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.junit.jupiter.jsonprovider.argument;
+package org.edhernandez.junit.jupiter.jsonprovider.argument;
 
-import com.junit.jupiter.jsonprovider.provider.ArgumentMap;
+import org.edhernandez.junit.jupiter.jsonprovider.provider.ArgumentMap;
 
 /**
  *  Represents file content for Junit5 test

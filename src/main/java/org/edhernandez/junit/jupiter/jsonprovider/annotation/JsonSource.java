@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.junit.jupiter.jsonprovider.annotation;
+package org.edhernandez.junit.jupiter.jsonprovider.annotation;
 
-import com.junit.jupiter.jsonprovider.argument.JsonArgument;
-import com.junit.jupiter.jsonprovider.provider.JsonArgumentProvider;
+import org.edhernandez.junit.jupiter.jsonprovider.argument.JsonArgument;
+import org.edhernandez.junit.jupiter.jsonprovider.provider.JsonArgumentProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.lang.annotation.ElementType;
