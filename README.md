@@ -68,7 +68,7 @@ public void ptest(JsonArgument jsonArgument) {
 }
 ~~~~
 
-#### caseX.json
+#### caseX.json (in your classpath)
 ~~~~
 {
     "name": "test name"
