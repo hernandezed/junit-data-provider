@@ -16,6 +16,7 @@
 package org.edhernandez.junit.jupiter.jsonprovider.annotation;
 
 import org.edhernandez.junit.jupiter.jsonprovider.argument.JsonArgument;
+import org.edhernandez.junit.jupiter.jsonprovider.enums.JacksonPropertyNamingStrategy;
 import org.edhernandez.junit.jupiter.jsonprovider.provider.JsonArgumentProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 

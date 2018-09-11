@@ -15,8 +15,6 @@
  */
 package org.edhernandez.junit.jupiter.jsonprovider.argument;
 
-import org.edhernandez.junit.jupiter.jsonprovider.provider.ArgumentMap;
-
 /**
  *  Represents file content for Junit5 test
  *
