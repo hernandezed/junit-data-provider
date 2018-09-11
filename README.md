@@ -72,7 +72,13 @@ public void ptest(JsonArgument jsonArgument) {
 ~~~~
 {
     "name": "test name"
-    "scenario": {}
-    "expectation": {}
+    "scenario": {
+        "key1": "value1",
+        "key2": "value2"
+    }
+    "expectation": {
+        "expectation1": "value1"
+        "expectation2": 23
+    }
 }
 ~~~~
