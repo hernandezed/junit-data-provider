@@ -38,5 +38,5 @@ public @interface JsonSource {
 
     Class<?> type() default JsonArgument.class;
 
-    PropertyNamingStrategyEnum propertyNamingStrategy() default PropertyNamingStrategyEnum.LOWER_CAMEL_CASE;
+    JacksonPropertyNamingStrategy propertyNamingStrategy() default JacksonPropertyNamingStrategy.LOWER_CAMEL_CASE;
 }

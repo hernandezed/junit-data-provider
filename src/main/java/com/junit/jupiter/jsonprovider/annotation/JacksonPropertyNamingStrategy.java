@@ -20,6 +20,6 @@ package com.junit.jupiter.jsonprovider.annotation;
  *
  * @author Eduardo Hernandez
  */
-public enum PropertyNamingStrategyEnum {
+public enum JacksonPropertyNamingStrategy {
     SNAKE_CASE, UPPER_CAMEL_CASE, LOWER_CAMEL_CASE, LOWER_CASE, KEBAB_CASE
 }

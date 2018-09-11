@@ -18,7 +18,7 @@ package com.junit.jupiter.jsonprovider.provider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.junit.jupiter.jsonprovider.annotation.JsonSource;
-import com.junit.jupiter.jsonprovider.annotation.PropertyNamingStrategyEnum;
+import com.junit.jupiter.jsonprovider.annotation.JacksonPropertyNamingStrategy;
 import com.junit.jupiter.jsonprovider.argument.JsonArgument;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
@@ -40,7 +40,7 @@ public class JsonArgumentProvider implements ArgumentsProvider, AnnotationConsum
     private Class<?> type;
     private ObjectMapper objectMapper;
 
-    private PropertyNamingStrategy getPropertyNamingStrategy(PropertyNamingStrategyEnum propertyNamingStrategyEnum) {
+    private PropertyNamingStrategy getPropertyNamingStrategy(JacksonPropertyNamingStrategy propertyNamingStrategyEnum) {
         switch (propertyNamingStrategyEnum) {
         case KEBAB_CASE:
             return PropertyNamingStrategy.KEBAB_CASE;
