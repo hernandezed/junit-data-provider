@@ -1,9 +1,9 @@
-package org.edhernandez.junit.jupiter.json;
+package org.edhernandez.junit.jupiter.dataprovider;
 
-import org.edhernandez.junit.jupiter.jsonprovider.annotation.JsonSource;
-import org.edhernandez.junit.jupiter.jsonprovider.argument.JsonArgument;
-import org.edhernandez.junit.jupiter.jsonprovider.enums.JacksonPropertyNamingStrategy;
-import org.edhernandez.junit.jupiter.jsonprovider.provider.JsonArgumentProvider;
+import org.edhernandez.junit.jupiter.dataprovider.annotation.JsonSource;
+import org.edhernandez.junit.jupiter.dataprovider.argument.TestArgument;
+import org.edhernandez.junit.jupiter.dataprovider.enums.JacksonPropertyNamingStrategy;
+import org.edhernandez.junit.jupiter.dataprovider.provider.JsonArgumentProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.Arguments;
@@ -35,7 +35,7 @@ public class JsonArgumentProviderTest {
             }
 
             @Override public Class<?> type() {
-                return JsonArgument.class;
+                return TestArgument.class;
             }
 
             @Override public JacksonPropertyNamingStrategy propertyNamingStrategy() {
@@ -46,7 +46,7 @@ public class JsonArgumentProviderTest {
         Stream<?> jsonArgumentStream = jsonArgumentProvider.provideArguments(null);
         Object[] arguments = jsonArgumentStream.toArray();
         assertEquals(1, arguments.length);
-        assertEquals("value", ((JsonArgument) ((Arguments) arguments[0]).get()[0])
+        assertEquals("value", ((TestArgument) ((Arguments) arguments[0]).get()[0])
                 .getScenario().get("key"));
     }
 
@@ -64,7 +64,7 @@ public class JsonArgumentProviderTest {
             }
 
             @Override public Class<?> type() {
-                return JsonArgument.class;
+                return TestArgument.class;
             }
 
             @Override public JacksonPropertyNamingStrategy propertyNamingStrategy() {
@@ -75,9 +75,9 @@ public class JsonArgumentProviderTest {
         Stream<?> jsonArgumentStream = jsonArgumentProvider.provideArguments(null);
         Object[] arguments = jsonArgumentStream.toArray();
         assertEquals(2, arguments.length);
-        assertEquals("value", ((JsonArgument) ((Arguments) arguments[0]).get()[0])
+        assertEquals("value", ((TestArgument) ((Arguments) arguments[0]).get()[0])
                 .getScenario().get("key"));
-        assertEquals("otherValue", ((JsonArgument) ((Arguments) arguments[1]).get()[0])
+        assertEquals("otherValue", ((TestArgument) ((Arguments) arguments[1]).get()[0])
                 .getScenario().get("otherKey"));
     }
 }

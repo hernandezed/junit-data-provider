@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.edhernandez.junit.jupiter.jsonprovider.annotation;
+package org.edhernandez.junit.jupiter.dataprovider.annotation;
 
-import org.edhernandez.junit.jupiter.jsonprovider.argument.JsonArgument;
-import org.edhernandez.junit.jupiter.jsonprovider.enums.JacksonPropertyNamingStrategy;
-import org.edhernandez.junit.jupiter.jsonprovider.provider.JsonArgumentProvider;
+import org.edhernandez.junit.jupiter.dataprovider.argument.TestArgument;
+import org.edhernandez.junit.jupiter.dataprovider.enums.JacksonPropertyNamingStrategy;
+import org.edhernandez.junit.jupiter.dataprovider.provider.JsonArgumentProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.lang.annotation.ElementType;
@@ -37,7 +37,7 @@ public @interface JsonSource {
 
     String[] values();
 
-    Class<?> type() default JsonArgument.class;
+    Class<?> type() default TestArgument.class;
 
     JacksonPropertyNamingStrategy propertyNamingStrategy() default JacksonPropertyNamingStrategy.LOWER_CAMEL_CASE;
 }

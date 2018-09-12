@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.edhernandez.junit.jupiter.jsonprovider.enums;
+package org.edhernandez.junit.jupiter.dataprovider.enums;
 
 /**
  * Identify Naming Strategies from Jackson

@@ -1,27 +1,13 @@
-/**
- * Copyright 2018-2018 Eduardo Hernandez
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package org.edhernandez.junit.jupiter.jsonprovider.provider;
+package org.edhernandez.junit.jupiter.dataprovider.provider;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import org.edhernandez.junit.jupiter.jsonprovider.annotation.JsonSource;
-import org.edhernandez.junit.jupiter.jsonprovider.argument.JsonArgument;
-import org.edhernandez.junit.jupiter.jsonprovider.enums.JacksonPropertyNamingStrategy;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import org.edhernandez.junit.jupiter.dataprovider.annotation.YamlSource;
+import org.edhernandez.junit.jupiter.dataprovider.argument.TestArgument;
+import org.edhernandez.junit.jupiter.dataprovider.enums.JacksonPropertyNamingStrategy;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
@@ -32,13 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-/**
- * Read arguments for Junit5 test from json file
- *
- * @author Eduardo Hernandez
- */
-public class JsonArgumentProvider implements ArgumentsProvider, AnnotationConsumer<JsonSource> {
-
+public class YamlArgumentProvider implements ArgumentsProvider, AnnotationConsumer<YamlSource> {
     private String[] values;
     private Class<?> type;
     private ObjectMapper objectMapper;
@@ -59,11 +39,11 @@ public class JsonArgumentProvider implements ArgumentsProvider, AnnotationConsum
         return null;
     }
 
-    @Override public void accept(JsonSource jsonSource) {
-        values = jsonSource.values();
-        type = jsonSource.type();
-        objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(getPropertyNamingStrategy(jsonSource.propertyNamingStrategy()))
+    @Override public void accept(YamlSource yamlSource) {
+        values = yamlSource.values();
+        type = yamlSource.type();
+        objectMapper = new ObjectMapper(new YAMLFactory());
+        objectMapper.setPropertyNamingStrategy(getPropertyNamingStrategy(yamlSource.propertyNamingStrategy()))
                 .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
     }
 
@@ -73,10 +53,10 @@ public class JsonArgumentProvider implements ArgumentsProvider, AnnotationConsum
                     try {
                         JavaType jt = objectMapper.getTypeFactory().constructParametricType(List.class, type);
                         List arguments = objectMapper.readValue(getClass().getResourceAsStream("/" + fileName), jt);
-                        if (type.equals(JsonArgument.class)) {
+                        if (type.equals(TestArgument.class)) {
                             arguments.forEach(argument -> {
-                                ((JsonArgument) argument).getScenario().setObjectMapper(objectMapper);
-                                ((JsonArgument) argument).getExpectation().setObjectMapper(objectMapper);
+                                ((TestArgument) argument).getScenario().setObjectMapper(objectMapper);
+                                ((TestArgument) argument).getExpectation().setObjectMapper(objectMapper);
                             });
                         }
                         return arguments;
