@@ -15,11 +15,13 @@
  */
 package org.edhernandez.junit.jupiter.jsonprovider.provider;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import org.edhernandez.junit.jupiter.jsonprovider.enums.JacksonPropertyNamingStrategy;
 import org.edhernandez.junit.jupiter.jsonprovider.annotation.JsonSource;
 import org.edhernandez.junit.jupiter.jsonprovider.argument.JsonArgument;
+import org.edhernandez.junit.jupiter.jsonprovider.enums.JacksonPropertyNamingStrategy;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsProvider;
@@ -27,6 +29,7 @@ import org.junit.jupiter.params.support.AnnotationConsumer;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -60,25 +63,29 @@ public class JsonArgumentProvider implements ArgumentsProvider, AnnotationConsum
         values = jsonSource.values();
         type = jsonSource.type();
         objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(getPropertyNamingStrategy(jsonSource.propertyNamingStrategy()));
+        objectMapper.setPropertyNamingStrategy(getPropertyNamingStrategy(jsonSource.propertyNamingStrategy()))
+                .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
     }
 
     @Override public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Arrays.stream(values)
                 .map(fileName -> {
                     try {
-                        Object o = objectMapper.readValue(getClass().getResourceAsStream("/" + fileName), type);
+                        JavaType jt = objectMapper.getTypeFactory().constructParametricType(List.class, type);
+                        List arguments = objectMapper.readValue(getClass().getResourceAsStream("/" + fileName), jt);
                         if (type.equals(JsonArgument.class)) {
-                            ((JsonArgument) o).getScenario().setObjectMapper(objectMapper);
-                            ((JsonArgument) o).getExpectation().setObjectMapper(objectMapper);
+                            arguments.forEach(argument -> {
+                                ((JsonArgument) argument).getScenario().setObjectMapper(objectMapper);
+                                ((JsonArgument) argument).getExpectation().setObjectMapper(objectMapper);
+                            });
                         }
-                        return o;
+                        return arguments;
                     } catch (IOException e) {
                         throw new IllegalStateException("File " + fileName + " doesn't exists.", e);
                     }
                 })
+                .flatMap(List::stream)
                 .map(Arguments::of);
-
     }
 
 }

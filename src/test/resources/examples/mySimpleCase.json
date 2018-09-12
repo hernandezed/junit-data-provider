@@ -1,0 +1,9 @@
+{
+  "name": "Simple Case",
+  "scenario": {
+    "key": "value"
+  },
+  "expectation": {
+    "key": "value"
+  }
+}
