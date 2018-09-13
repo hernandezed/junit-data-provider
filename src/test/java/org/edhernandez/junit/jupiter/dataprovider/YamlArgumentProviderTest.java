@@ -23,7 +23,7 @@ public class YamlArgumentProviderTest {
     }
 
     @Test
-    public void provideArguments_withSingleJsonElement_interpretAsList() throws Exception {
+    public void provideArguments_withSingleYamlElement_interpretAsList() throws Exception {
         YamlSource yamlSource = new YamlSource() {
 
             @Override public Class<? extends Annotation> annotationType() {
@@ -31,7 +31,7 @@ public class YamlArgumentProviderTest {
             }
 
             @Override public String[] values() {
-                return new String[] { "examples/mySimpleCase.yml" };
+                return new String[] { "examples/yaml/mySimpleCase.yml" };
             }
 
             @Override public Class<?> type() {
@@ -51,7 +51,7 @@ public class YamlArgumentProviderTest {
     }
 
     @Test
-    public void provideArguments_withListJsonElement_interpretAsList() throws Exception {
+    public void provideArguments_withListYamlElement_interpretAsList() throws Exception {
         YamlSource yamlSource = new YamlSource() {
 
             @Override public Class<? extends Annotation> annotationType() {
@@ -59,7 +59,7 @@ public class YamlArgumentProviderTest {
             }
 
             @Override public String[] values() {
-                return new String[] { "examples/myListCase.yml" };
+                return new String[] { "examples/yaml/myListCase.yml" };
             }
 
             @Override public Class<?> type() {

@@ -31,7 +31,7 @@ public class JsonArgumentProviderTest {
             }
 
             @Override public String[] values() {
-                return new String[] { "examples/mySimpleCase.json" };
+                return new String[] { "examples/json/mySimpleCase.json" };
             }
 
             @Override public Class<?> type() {
@@ -60,7 +60,7 @@ public class JsonArgumentProviderTest {
             }
 
             @Override public String[] values() {
-                return new String[] { "examples/myListCase.json" };
+                return new String[] { "examples/json/myListCase.json" };
             }
 
             @Override public Class<?> type() {

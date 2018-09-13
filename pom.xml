@@ -40,6 +40,7 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${com.fasterxml.jackson.core.version}</version>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
 
@@ -60,6 +61,13 @@
             <artifactId>jackson-dataformat-yaml</artifactId>
             <version>${com.fasterxml.jackson.core.version}</version>
             <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>gherkin</artifactId>
+            <version>5.1.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
