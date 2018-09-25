@@ -61,17 +61,17 @@ Optionally, you can use yaml syntax using (version 1.0-RELEASE)
 ~~~~
 
 ### How to use
-
-#### YourTest.java
+#### JSON
+##### YourTest.java
 ~~~~
 @ParameterizedTest(name = "{0}")
 @JsonSource(values = { "caseOne.json", "caseTwo.json" })
-public void ptest(JsonArgument jsonArgument) {
+public void ptest(TestArgument testArgument) {
     // make some stuff
 }
 ~~~~
 
-#### caseX.json (in your classpath)
+##### caseX.json (in your classpath)
 ~~~~
 {
     "name": "test name"
@@ -84,4 +84,25 @@ public void ptest(JsonArgument jsonArgument) {
         "expectation2": 23
     }
 }
+~~~~
+#### Yaml
+##### YourTest.java
+~~~~
+@ParameterizedTest(name = "{0}")
+@YamlSource(values = { "caseOne.yml", "caseTwo.yml" })
+public void ptest(TestArgument testArgument) {
+    // make some stuff
+}
+~~~~
+
+##### caseX.yml (in your classpath)
+~~~~
+name: "Test name"
+scenario:
+    key1: value1
+    key2: value2
+expectation:
+    expectation1: value1
+    expectation2: 23
+        
 ~~~~
