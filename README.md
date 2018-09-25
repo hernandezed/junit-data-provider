@@ -97,11 +97,11 @@ public void ptest(TestArgument testArgument) {
 
 ##### caseX.yml (in your classpath)
 ~~~~
-name: "Test name"
-scenario:
+- name: "Test name"
+  scenario:
     key1: value1
     key2: value2
-expectation:
+  expectation:
     expectation1: value1
     expectation2: 23
         
