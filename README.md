@@ -11,34 +11,37 @@ Run your parameterized test with json file source
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-api</artifactId>
     <version>5.3.0</version>
-    <scope>provided</scope>
 </dependency>
 <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-params</artifactId>
     <version>5.3.0</version>
-    <scope>provided</scope>
 </dependency>
 <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-engine</artifactId>
     <version>5.3.0</version>
-    <scope>provided</scope>
 </dependency>
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-core</artifactId>
     <version>2.8.4</version>
-    <scope>provided</scope>
 </dependency>
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
     <version>2.8.4</version>
-    <scope>provided</scope>
 </dependency>
 ~~~~
 
+Optionally, you can use yaml syntax using (version 1.0-RELEASE)
+~~~~
+<dependency>
+   <groupId>com.fasterxml.jackson.dataformat</groupId>
+   <artifactId>jackson-dataformat-yaml</artifactId>
+   <version>2.8.10</version>
+</dependency>
+~~~~
 ## Install
 ### Add github repository to your project
 ~~~~
@@ -51,8 +54,8 @@ Run your parameterized test with json file source
 ~~~~
 <dependency>
     <groupId>com.junit.jupiter.json</groupId>
-    <artifactId>json-provider</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>junit-data-provider</artifactId>
+    <version>1.0-RELEASE</version>
     <scope>test</scope>
 </dependency>
 ~~~~
