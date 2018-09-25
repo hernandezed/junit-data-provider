@@ -18,54 +18,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class YamlArgumentProvider implements ArgumentsProvider, AnnotationConsumer<YamlSource> {
-    private String[] values;
-    private Class<?> type;
-    private ObjectMapper objectMapper;
-
-    private PropertyNamingStrategy getPropertyNamingStrategy(JacksonPropertyNamingStrategy propertyNamingStrategyEnum) {
-        switch (propertyNamingStrategyEnum) {
-        case KEBAB_CASE:
-            return PropertyNamingStrategy.KEBAB_CASE;
-        case LOWER_CASE:
-            return PropertyNamingStrategy.LOWER_CASE;
-        case SNAKE_CASE:
-            return PropertyNamingStrategy.SNAKE_CASE;
-        case LOWER_CAMEL_CASE:
-            return PropertyNamingStrategy.LOWER_CAMEL_CASE;
-        case UPPER_CAMEL_CASE:
-            return PropertyNamingStrategy.UPPER_CAMEL_CASE;
-        }
-        return null;
-    }
-
-    @Override public void accept(YamlSource yamlSource) {
+public class YamlArgumentProvider extends ArgumentProvider<YamlSource> {
+    @Override
+    public void accept(YamlSource yamlSource) {
         values = yamlSource.values();
         type = yamlSource.type();
         objectMapper = new ObjectMapper(new YAMLFactory());
         objectMapper.setPropertyNamingStrategy(getPropertyNamingStrategy(yamlSource.propertyNamingStrategy()))
                 .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-    }
-
-    @Override public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
-        return Arrays.stream(values)
-                .map(fileName -> {
-                    try {
-                        JavaType jt = objectMapper.getTypeFactory().constructParametricType(List.class, type);
-                        List arguments = objectMapper.readValue(getClass().getResourceAsStream("/" + fileName), jt);
-                        if (type.equals(TestArgument.class)) {
-                            arguments.forEach(argument -> {
-                                ((TestArgument) argument).getScenario().setObjectMapper(objectMapper);
-                                ((TestArgument) argument).getExpectation().setObjectMapper(objectMapper);
-                            });
-                        }
-                        return arguments;
-                    } catch (IOException e) {
-                        throw new IllegalStateException("File " + fileName + " doesn't exists.", e);
-                    }
-                })
-                .flatMap(List::stream)
-                .map(Arguments::of);
     }
 
 }

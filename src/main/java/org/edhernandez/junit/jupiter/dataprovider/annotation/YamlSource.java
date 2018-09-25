@@ -18,6 +18,7 @@ package org.edhernandez.junit.jupiter.dataprovider.annotation;
 import org.edhernandez.junit.jupiter.dataprovider.argument.TestArgument;
 import org.edhernandez.junit.jupiter.dataprovider.enums.JacksonPropertyNamingStrategy;
 import org.edhernandez.junit.jupiter.dataprovider.provider.JsonArgumentProvider;
+import org.edhernandez.junit.jupiter.dataprovider.provider.YamlArgumentProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.lang.annotation.ElementType;
@@ -32,7 +33,7 @@ import java.lang.annotation.Target;
  */
 @Target({ ElementType.ANNOTATION_TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
-@ArgumentsSource(JsonArgumentProvider.class)
+@ArgumentsSource(YamlArgumentProvider.class)
 public @interface YamlSource {
 
     String[] values();
