@@ -44,7 +44,7 @@ Run your parameterized test with json file source
 ~~~~
  <repository>
      <id>github.io</id>
-     <url>https://raw.github.com/hernandezed/junit-json-provider/repository/</url>
+     <url>https://raw.github.com/hernandezed/junit-data-provider/repository/</url>
  </repository>
 ~~~~
 ### Add the dependency
