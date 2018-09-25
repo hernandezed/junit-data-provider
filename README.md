@@ -1,4 +1,4 @@
-# Junit Json Provider
+# Junit Data Provider
 Run your parameterized test with json file source
 
 ## Dependencies
