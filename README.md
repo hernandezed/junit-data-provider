@@ -6,7 +6,7 @@ Run your parameterized test with json file source
 ![Alt](https://img.shields.io/badge/Junit-5-green.svg?style=flat)
 ![Alt](https://img.shields.io/badge/Jackson-+2.8-blue.svg?style=flat)
 
-~~~~
+```xml
 <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-api</artifactId>
@@ -32,47 +32,47 @@ Run your parameterized test with json file source
     <artifactId>jackson-databind</artifactId>
     <version>2.8.4</version>
 </dependency>
-~~~~
+```
 
 Optionally, you can use yaml syntax using (version 1.0-RELEASE)
-~~~~
+```xml
 <dependency>
    <groupId>com.fasterxml.jackson.dataformat</groupId>
    <artifactId>jackson-dataformat-yaml</artifactId>
    <version>2.8.10</version>
 </dependency>
-~~~~
+```
 ## Install
 ### Add github repository to your project
-~~~~
+```xml
  <repository>
      <id>github.io</id>
      <url>https://raw.github.com/hernandezed/junit-data-provider/repository/</url>
  </repository>
-~~~~
+```
 ### Add the dependency
-~~~~
+```xml
 <dependency>
     <groupId>com.junit.jupiter.json</groupId>
     <artifactId>junit-data-provider</artifactId>
     <version>1.0-RELEASE</version>
     <scope>test</scope>
 </dependency>
-~~~~
+```
 
 ### How to use
 #### JSON
 ##### YourTest.java
-~~~~
+```java
 @ParameterizedTest(name = "{0}")
 @JsonSource(values = { "caseOne.json", "caseTwo.json" })
 public void ptest(TestArgument testArgument) {
     // make some stuff
 }
-~~~~
+```
 
 ##### caseX.json (in your classpath)
-~~~~
+```javascript
 {
     "name": "test name"
     "scenario": {
@@ -84,19 +84,19 @@ public void ptest(TestArgument testArgument) {
         "expectation2": 23
     }
 }
-~~~~
+```
 #### Yaml
 ##### YourTest.java
-~~~~
+```java
 @ParameterizedTest(name = "{0}")
 @YamlSource(values = { "caseOne.yml", "caseTwo.yml" })
 public void ptest(TestArgument testArgument) {
     // make some stuff
 }
-~~~~
+```
 
 ##### caseX.yml (in your classpath)
-~~~~
+```yaml
 - name: "Test name"
   scenario:
     key1: value1
@@ -105,4 +105,4 @@ public void ptest(TestArgument testArgument) {
     expectation1: value1
     expectation2: 23
         
-~~~~
+```
