@@ -25,12 +25,12 @@ Run your parameterized test with json file source
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-core</artifactId>
-    <version>2.8.4</version>
+    <version>2.8.11</version>
 </dependency>
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
-    <version>2.8.4</version>
+    <version>2.8.11</version>
 </dependency>
 ```
 
@@ -53,7 +53,7 @@ Optionally, you can use yaml syntax using (version 1.0-RELEASE)
 ### Add the dependency
 ```xml
 <dependency>
-    <groupId>com.junit.jupiter.json</groupId>
+    <groupId>org.edhernandez.junit.jupiter.dataprovider</groupId>
     <artifactId>junit-data-provider</artifactId>
     <version>1.0-RELEASE</version>
     <scope>test</scope>
