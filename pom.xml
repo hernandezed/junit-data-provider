@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
     <groupId>org.edhernandez.junit.jupiter.dataprovider</groupId>
     <artifactId>junit-data-provider</artifactId>
-    <version>1.1-RELEASE</version>
+    <version>1.2-RELEASE</version>
     <properties>
         <org.junit.jupiter.version>5.3.0</org.junit.jupiter.version>
         <com.fasterxml.jackson.core.version>2.8.11</com.fasterxml.jackson.core.version>
@@ -98,8 +98,8 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
                     <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
                     <includes><include>**/*</include></includes>
-                    <repositoryName>YOUR-REPOSITORY-NAME</repositoryName>      <!-- github repo name -->
-                    <repositoryOwner>YOUR-GITHUB-USERNAME</repositoryOwner>    <!-- github username  -->
+                    <repositoryName>junit-data-provider</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>hernandezed</repositoryOwner>    <!-- github username  -->
                 </configuration>
                 <executions>
                     <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
